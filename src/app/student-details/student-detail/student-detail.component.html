@@ -1,0 +1,34 @@
+ 
+<form #userForm ="ngForm"  (ngSubmit)="clickSubmit()">
+  
+    {{userForm.value | json}}
+    {{studentModel |json}}
+ <div class="form-group" >
+  <label for="StudentName">Student Name</label>
+  <input type="text" name="name" class="form-control" #name="ngModel"  required [class.is-invalid]="name.invalid && name.touched"  id="Name"   placeholder="Enter Student Name" [(ngModel)]="studentModel.Name">
+<small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+</div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name ="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="studentModel.Email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+      <label for="Mobile">Mobile</label>
+      <input type="number" #mobile="ngModel" [class.is-invalid] ="mobile.touched && mobile.invalid" pattern="^\d{9}$" class="form-control" id="Mobile" placeholder="Mobile" name ="Mobile" [(ngModel)]="studentModel.Mobile">
+    </div>
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" class="form-control" id="age" placeholder="Age" name ="age" [(ngModel)]="studentModel.Age">
+  </div>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" name ="Member" [(ngModel)]="studentModel.Member">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div class="form-group">
+      <label for="exampleInputEmail1">Test</label>
+      <input type="Test" name ="Test" class="form-control" id="Test" aria-describedby="emailHelp" placeholder="Test" [(ngModel)]="studentsService.Email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div> 
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
